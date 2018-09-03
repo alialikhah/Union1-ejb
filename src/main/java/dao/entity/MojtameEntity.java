@@ -67,18 +67,12 @@ public class MojtameEntity implements Serializable{
 	@Lob
 	private byte[] mojtamePic2;
 	
-	@Column(name = "mojtame_pic3",nullable = true)
-	@Lob
-	private byte[] mojtamePic3;
+	@Column(name = "mojtame_width", nullable = true)
+	private double gmapWhidth;
+	@Column(name = "mojtame_height", nullable = true)
+	private double gmapHeight;
 	
-	@Column(name = "mojtame_pic4",nullable = true)
-	@Lob
-	private byte[] mojtamePic4;
 	
-	@Column(name = "mojtame_pic5",nullable = true)
-	@Lob
-	private byte[] mojtamePic5;
-
 	public long getMojtameId() {
 		return mojtameId;
 	}
@@ -191,6 +185,26 @@ public class MojtameEntity implements Serializable{
 		this.mojtamePic1 = mojtamePic1;
 	}
 
+
+	
+	public double getGmapWhidth() {
+		return gmapWhidth;
+	}
+
+	public void setGmapWhidth(double gmapWhidth) {
+		this.gmapWhidth = gmapWhidth;
+	}
+
+	public double getGmapHeight() {
+		return gmapHeight;
+	}
+
+	public void setGmapHeight(double gmapHeight) {
+		this.gmapHeight = gmapHeight;
+	}
+	
+	
+
 	public byte[] getMojtamePic2() {
 		return mojtamePic2;
 	}
@@ -199,30 +213,6 @@ public class MojtameEntity implements Serializable{
 		this.mojtamePic2 = mojtamePic2;
 	}
 
-	public byte[] getMojtamePic3() {
-		return mojtamePic3;
-	}
-
-	public void setMojtamePic3(byte[] mojtamePic3) {
-		this.mojtamePic3 = mojtamePic3;
-	}
-
-	public byte[] getMojtamePic4() {
-		return mojtamePic4;
-	}
-
-	public void setMojtamePic4(byte[] mojtamePic4) {
-		this.mojtamePic4 = mojtamePic4;
-	}
-
-	public byte[] getMojtamePic5() {
-		return mojtamePic5;
-	}
-
-	public void setMojtamePic5(byte[] mojtamePic5) {
-		this.mojtamePic5 = mojtamePic5;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof MojtameEntity))

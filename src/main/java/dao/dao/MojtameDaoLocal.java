@@ -17,4 +17,6 @@ public interface MojtameDaoLocal {
 
 	MojtameEntity findMojtameById(long mojtameId);
 
+	void updateMojtama(MojtameEntity mojtameEntity);
+
 }

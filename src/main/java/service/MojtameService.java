@@ -43,7 +43,10 @@ public class MojtameService implements MojtameServiceLocal {
     	return mojtameDaoLocal.findMojtameById(mojtameId);
     }
     
-    
+    @Override
+    public void updateMojtama(MojtameEntity mojtameEntity) {
+    	mojtameDaoLocal.updateMojtama(mojtameEntity);
+    }
     }
 
 

@@ -17,4 +17,6 @@ public interface MojtameServiceLocal {
 
 	MojtameEntity findMojtameById(long mojtameId);
 
+	void updateMojtama(MojtameEntity mojtameEntity);
+
 }

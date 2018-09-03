@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import dao.entity.MashahirEntity;
 import dao.entity.MojtameEntity;
 import dao.entity.NaghdOBaresiEntity;
 
@@ -45,6 +46,12 @@ public class MojtameDao implements MojtameDaoLocal {
     @Override
     public MojtameEntity findMojtameById(long mojtameId) {
     	return (MojtameEntity) entityManager.createNamedQuery("findMojtameById").setParameter("v_mojtameId", mojtameId).getSingleResult();
+    }
+    
+    
+    @Override
+    public void updateMojtama(MojtameEntity mojtameEntity) {
+    	entityManager.merge(mojtameEntity);
     }
 
 }
