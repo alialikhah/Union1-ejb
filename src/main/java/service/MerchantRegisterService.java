@@ -139,5 +139,10 @@ public class MerchantRegisterService implements MerchantRegisterServiceLocal {
         	return merchantRegisterDaoLocal.findMerchantByShopNameEng(ShopNameEng);
         }
         
+    	@Override
+        public List<MerchantEntity> findMerchantByShopNamePer(String ShopNamePer) throws Exception {
+    		return merchantRegisterDaoLocal.findMerchantByShopNamePer(ShopNamePer);
+    	}
+        
         
 }

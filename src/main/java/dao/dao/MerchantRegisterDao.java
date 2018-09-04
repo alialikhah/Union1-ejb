@@ -97,6 +97,16 @@ public class MerchantRegisterDao implements MerchantRegisterDaoLocal {
 	}   
     	}
     
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<MerchantEntity> findMerchantByShopNamePer(String ShopNamePer) throws Exception {
+    	try {
+    	return entityManager.createNamedQuery("findMerchantByShopNamePer").setParameter("v_merchantShopNamePer","%" + ShopNamePer + "%").getResultList();
+	}catch (Exception e) {
+	    throw new Exception();
+	}   
+    	}
+    
     
 
 

@@ -31,5 +31,7 @@ public interface MerchantRegisterDaoLocal {
 
 	MerchantEntity findMerchantByShopNameEng(String ShopNameEng) throws Exception;
 
+	List<MerchantEntity> findMerchantByShopNamePer(String ShopNamePer) throws Exception;
+
 
 }

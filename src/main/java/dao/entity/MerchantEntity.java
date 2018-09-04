@@ -39,6 +39,8 @@ import org.eclipse.persistence.annotations.CacheType;
 	@NamedQuery(name="findMerchantByShomarehPar" , query="SELECT i FROM MerchantEntity i WHERE i.shomarehParPaano=:v_shomarehParvande"),
 	@NamedQuery(name="findMerchantByRaste" , query="SELECT i FROM MerchantEntity i WHERE i.merchantRaste=:v_merchantRaste"),
 	@NamedQuery(name="findMerchantByShopNameEng" , query="SELECT i FROM MerchantEntity i WHERE i.merchantShopNameEng=:v_merchantShopNameEng"),
+	@NamedQuery(name="findMerchantByShopNamePer" , query="SELECT i FROM MerchantEntity i WHERE i.merchantShopNamePer like :v_merchantShopNamePer"),
+
 })
 public class MerchantEntity implements Serializable {
 
