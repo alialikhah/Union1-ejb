@@ -44,5 +44,20 @@ public class NaghdDao implements NaghdDaoLocal {
     public NaghdOBaresiEntity findNagdByID(long naghdId) {
     	return (NaghdOBaresiEntity) entityManager.createNamedQuery("findNaghdById").setParameter("v_naghdId", naghdId).getSingleResult();
     }
+    
+    @Override
+    public void updateNagd(NaghdOBaresiEntity naghdOBaresiEntity) {
+    	entityManager.merge(naghdOBaresiEntity);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<NaghdOBaresiEntity> findNagdByTitle(String nagdName) throws Exception {
+    	try {
+    	return entityManager.createNamedQuery("findNagdByTitle").setParameter("v_naghdTitle","%" + nagdName + "%").getResultList();
+	}catch (Exception e) {
+	    throw new Exception();
+	}   
+    	}
 
 }

@@ -19,4 +19,6 @@ public interface MojtameDaoLocal {
 
 	void updateMojtama(MojtameEntity mojtameEntity);
 
+	List<MojtameEntity> findMojtamaByTitle(String mojtamaTitle) throws Exception;
+
 }

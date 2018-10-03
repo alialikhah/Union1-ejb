@@ -53,5 +53,16 @@ public class MojtameDao implements MojtameDaoLocal {
     public void updateMojtama(MojtameEntity mojtameEntity) {
     	entityManager.merge(mojtameEntity);
     }
+    
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<MojtameEntity> findMojtamaByTitle(String mojtamaTitle) throws Exception {
+    	try {
+    	return entityManager.createNamedQuery("findMojtamaByTitle").setParameter("v_mojtameTitle","%" + mojtamaTitle + "%").getResultList();
+	}catch (Exception e) {
+	    throw new Exception();
+	}   
+    	}
 
 }

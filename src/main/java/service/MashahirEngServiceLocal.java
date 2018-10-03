@@ -19,4 +19,6 @@ public interface MashahirEngServiceLocal {
 
 	void updateMashahirEng(MashahirEngEntity mashahirEngEntity);
 
+	List<MashahirEngEntity> findMashahirEngByName(String mashahirEngName) throws Exception;
+
 }

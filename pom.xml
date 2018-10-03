@@ -90,7 +90,12 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-      
+      <dependency>
+    <groupId>javax.websocket</groupId>
+    <artifactId>javax.websocket-api</artifactId>
+    <version>1.1</version>
+    <scope>provided</scope>
+</dependency>
         <dependency>
             <groupId>org.jboss.arquillian.protocol</groupId>
             <artifactId>arquillian-protocol-servlet</artifactId>
@@ -109,12 +114,21 @@
     <artifactId>commons-io</artifactId>
     <version>2.0.1</version>
 </dependency>
-
+<dependency>
+    <groupId>javax.json</groupId>
+    <artifactId>javax.json-api</artifactId>
+    <version>1.1.2</version>
+</dependency>
         
                 <dependency>
     <groupId>org.wildfly</groupId>
     <artifactId>jipijapa-eclipselink</artifactId>
     <version>10.1.0.Final</version>
+</dependency>
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>javax.mail-api</artifactId>
+    <version>1.6.2</version>
 </dependency>
     <dependency>
 				<groupId>org.eclipse.persistence</groupId>

@@ -39,8 +39,12 @@ public class SliderService implements SliderServiceLocal {
     }
     
     @Override
-    public SliderEntity findSliderById(long sliderId) {
+    public SliderEntity findSliderById(long sliderId) throws Exception {
     	return sliderDaoLocal.findSliderById(sliderId);
+    }
+    @Override
+    public void updateSlider(SliderEntity sliderEntity) {
+    	sliderDaoLocal.updateSlider(sliderEntity);
     }
     
 }

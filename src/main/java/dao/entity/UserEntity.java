@@ -20,6 +20,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="findAllUsers" , query="SELECT a FROM UserEntity a"),
+	@NamedQuery(name="findUserByEmail" , query="SELECT pp FROM UserEntity pp WHERE pp.userEmail=:v_userEmail"),
 })
 public class UserEntity implements Serializable{
 
@@ -28,20 +29,16 @@ public class UserEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private long userId;
-	@Column(name = "username", length = 100, nullable = true)
+	@Column(name = "username", length = 100, nullable = false)
 	private String userName;
-	@Column(name = "family", length = 100, nullable = true)
-	private String userFamily;
-	@Column(name = "ssn", length = 100, nullable = true)
-	private String userSsn;
-	@Column(name = "email", length = 100, nullable = true)
+
+	@Column(name = "email", length = 100, nullable = false )
 	private String userEmail;
-	@Column(name = "mobile", length = 100, nullable = true)
-	private String userMobile;
-	@Column(name = "access", length = 100, nullable = true)
-	private String access;
-	@Column(name = "password", length = 100, nullable = true)
-	private String password;
+	@Column(name = "user_taeed")
+	private boolean usertaeed;
+	@Column(name = "ramz", length = 11, nullable = false)
+	private String UserRamz;
+	
 	public long getUserId() {
 		return userId;
 	}
@@ -54,51 +51,37 @@ public class UserEntity implements Serializable{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserFamily() {
-		return userFamily;
-	}
-	public void setUserFamily(String userFamily) {
-		this.userFamily = userFamily;
-	}
-	public String getUserSsn() {
-		return userSsn;
-	}
-	public void setUserSsn(String userSsn) {
-		this.userSsn = userSsn;
-	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserMobile() {
-		return userMobile;
+
+	public boolean isUsertaeed() {
+		return usertaeed;
 	}
-	public void setUserMobile(String userMobile) {
-		this.userMobile = userMobile;
-	}
-	public String getAccess() {
-		return access;
-	}
-	public void setAccess(String access) {
-		this.access = access;
+	public void setUsertaeed(boolean usertaeed) {
+		this.usertaeed = usertaeed;
 	}
 	
-	
-	
-	public String getPassword() {
-		return password;
+	public String getUserRamz() {
+		return UserRamz;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserRamz(String userRamz) {
+		UserRamz = userRamz;
 	}
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof UserEntity))
 			return false;
 		UserEntity userEntity=(UserEntity) obj;
-		return (userEntity.userId==this.userId);
+		return ((userEntity.userId==this.userId)||(userEntity.userEmail.equals(this.userEmail)));
+	}
+	
+	public void userLogin() {
+		
 	}
 	
 }

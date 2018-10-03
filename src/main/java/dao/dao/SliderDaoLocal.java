@@ -15,6 +15,8 @@ public interface SliderDaoLocal {
 
 	void deleteSlider(SliderEntity sliderEntity);
 
-	SliderEntity findSliderById(long sliderId);
+	SliderEntity findSliderById(long sliderId) throws Exception;
+
+	void updateSlider(SliderEntity sliderEntity);
 
 }

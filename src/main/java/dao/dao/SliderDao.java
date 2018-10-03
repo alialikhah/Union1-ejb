@@ -42,8 +42,17 @@ public class SliderDao implements SliderDaoLocal {
     	entityManager.remove(sliderEntity2);
     }
     @Override
-    public SliderEntity findSliderById(long sliderId) {
+    public SliderEntity findSliderById(long sliderId) throws Exception {
+    	try {
     	return (SliderEntity) entityManager.createNamedQuery("findSliderById").setParameter("v_sliderId", sliderId).getSingleResult();
+    	}catch(Exception exception) {
+    		throw new Exception();
+    	}
+    	}
+    @Override
+    public void updateSlider(SliderEntity sliderEntity) {
+    	entityManager.merge(sliderEntity);
     }
+    
     
 }

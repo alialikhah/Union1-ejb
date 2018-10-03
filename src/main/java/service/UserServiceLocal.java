@@ -9,4 +9,6 @@ public interface UserServiceLocal {
 
 	void insertToUserEntity(UserEntity userEntity);
 
+	UserEntity findUserByEmail(String email);
+
 }

@@ -24,4 +24,9 @@ public class UserService implements UserServiceLocal {
     public void insertToUserEntity(UserEntity userEntity) {
     	userDaoLocal.insertToUserEntity(userEntity);
     }
+    
+    @Override
+    public UserEntity findUserByEmail(String email) {
+    	return userDaoLocal.findUserByEmail(email);
+    }
 }

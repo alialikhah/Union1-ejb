@@ -19,4 +19,6 @@ public interface MashahirEngDaoLocal {
 
 	void updateMashahirEng(MashahirEngEntity mashahirEngEntity);
 
+	List<MashahirEngEntity> findMashahirEngByName(String mashahirEngName) throws Exception;
+
 }

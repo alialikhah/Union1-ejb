@@ -43,5 +43,15 @@ public class NaghdService implements NaghdServiceLocal {
     	return naghdDaoLocal.findNagdByID(naghdId);
     }
     
+    @Override
+    public void updateNagd(NaghdOBaresiEntity naghdOBaresiEntity) {
+    	naghdDaoLocal.updateNagd(naghdOBaresiEntity);
+    }
+    
+	@Override
+    public List<NaghdOBaresiEntity> findNagdByTitle(String nagdName) throws Exception {
+		return naghdDaoLocal.findNagdByTitle(nagdName);
+	}
+    
 
 }

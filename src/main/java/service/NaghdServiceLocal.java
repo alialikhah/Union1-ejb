@@ -17,4 +17,8 @@ public interface NaghdServiceLocal {
 
 	NaghdOBaresiEntity findNagdByID(long naghdId);
 
+	void updateNagd(NaghdOBaresiEntity naghdOBaresiEntity);
+
+	List<NaghdOBaresiEntity> findNagdByTitle(String nagdName) throws Exception;
+
 }

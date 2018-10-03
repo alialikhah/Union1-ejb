@@ -22,6 +22,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @NamedQueries({
 	@NamedQuery(name="findAllMojtame" , query="SELECT m FROM MojtameEntity m"),
 	@NamedQuery(name="findMojtameById" , query="SELECT i FROM MojtameEntity i WHERE i.mojtameId=:v_mojtameId"),
+	@NamedQuery(name="findMojtamaByTitle" , query="SELECT i FROM MojtameEntity i WHERE i.mojtameTitle like :v_mojtameTitle"),
 })
 public class MojtameEntity implements Serializable{
 
@@ -218,7 +219,7 @@ public class MojtameEntity implements Serializable{
 		if (!(obj instanceof MojtameEntity))
 			return false;
 		MojtameEntity mojtameEntity=(MojtameEntity) obj;
-		return ((mojtameEntity.mojtameId==this.mojtameId));
+		return ((mojtameEntity.mojtameId==this.mojtameId)||(mojtameEntity.mojtameTitle==this.mojtameTitle));
 	}
 	
 	

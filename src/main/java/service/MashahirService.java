@@ -49,4 +49,8 @@ public class MashahirService implements MashahirServiceLocal {
     mashahirDaoLocal.updateMashahir(mashahirEntity);
     }
     
+	@Override
+    public List<MashahirEntity> findMashahirByName(String mashahirName) throws Exception {
+		return mashahirDaoLocal.findMashahirByName(mashahirName);
+	}
 }

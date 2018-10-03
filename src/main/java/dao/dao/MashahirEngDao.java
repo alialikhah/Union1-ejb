@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import dao.entity.MashahirEngEntity;
+import dao.entity.MashahirEntity;
 
 /**
  * Session Bean implementation class MashahirEngDao
@@ -56,5 +57,15 @@ public class MashahirEngDao implements MashahirEngDaoLocal {
 	public void updateMashahirEng(MashahirEngEntity mashahirEngEntity) {
     	entityManager.merge(mashahirEngEntity);
     }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<MashahirEngEntity> findMashahirEngByName(String mashahirEngName) throws Exception {
+    	try {
+    	return entityManager.createNamedQuery("findMashahirEngByName").setParameter("v_mashahirEngName","%" + mashahirEngName + "%").getResultList();
+	}catch (Exception e) {
+	    throw new Exception();
+	}   
+    	}
 
 }

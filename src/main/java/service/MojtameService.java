@@ -47,6 +47,13 @@ public class MojtameService implements MojtameServiceLocal {
     public void updateMojtama(MojtameEntity mojtameEntity) {
     	mojtameDaoLocal.updateMojtama(mojtameEntity);
     }
+    
+	@Override
+    public List<MojtameEntity> findMojtamaByTitle(String mojtamaTitle) throws Exception {
+		return mojtameDaoLocal.findMojtamaByTitle(mojtamaTitle);
+	}
+    
+    
     }
 
 

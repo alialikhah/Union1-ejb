@@ -25,5 +25,9 @@ public class UserDao implements UserDaoLocal {
     public void insertToUserEntity(UserEntity userEntity) {
     	entityManager.persist(userEntity);
     }
+    @Override
+    public UserEntity findUserByEmail(String email) {
+    	return (UserEntity) entityManager.createNamedQuery("findUserByEmail").setParameter("v_userEmail",email).getSingleResult();
+    }
 
 }

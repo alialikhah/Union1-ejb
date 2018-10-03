@@ -57,6 +57,14 @@ public class MashahirDao implements MashahirDaoLocal {
     	entityManager.merge(mashahirEntity);
     }
     
-    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<MashahirEntity> findMashahirByName(String mashahirName) throws Exception {
+    	try {
+    	return entityManager.createNamedQuery("findMashahirByName").setParameter("v_mashahirName","%" + mashahirName + "%").getResultList();
+	}catch (Exception e) {
+	    throw new Exception();
+	}   
+    	}
     
 }
