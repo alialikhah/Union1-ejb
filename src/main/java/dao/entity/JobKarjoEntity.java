@@ -24,6 +24,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="findAllkarjo" , query="SELECT a FROM JobKarjoEntity a"),
+	@NamedQuery(name="findKarjoById" , query="SELECT i FROM JobKarjoEntity i WHERE i.karjoId=:v_karjoId"),
 })
 public class JobKarjoEntity implements Serializable{
 
@@ -45,9 +46,8 @@ public class JobKarjoEntity implements Serializable{
 	private String karjoGender;
 	@Column(name = "karjo_city", length = 100, nullable = true)
 	private String karjoCityName;
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="karjo_birthday" , nullable=true)
-	private Date karjoBirth;
+	private String karjoBirth;
 	@Column(name = "karjo_phone", length = 20, nullable = true)
 	private String karjoPhone;
 	@Column(name = "karjo_mobile", length = 20, nullable = true)
@@ -69,6 +69,8 @@ public class JobKarjoEntity implements Serializable{
 	@Lob
 	@Column(name="karjo_resume" , nullable=true)
 	private byte[] karjoResume;
+	@Column(name = "show")
+	private boolean show;
 	
 	public long getKarjoId() {
 		return karjoId;
@@ -106,10 +108,11 @@ public class JobKarjoEntity implements Serializable{
 	public void setKarjoCityName(String karjoCityName) {
 		this.karjoCityName = karjoCityName;
 	}
-	public Date getKarjoBirth() {
+
+	public String getKarjoBirth() {
 		return karjoBirth;
 	}
-	public void setKarjoBirth(Date karjoBirth) {
+	public void setKarjoBirth(String karjoBirth) {
 		this.karjoBirth = karjoBirth;
 	}
 	public String getKarjoPhone() {
@@ -173,6 +176,14 @@ public class JobKarjoEntity implements Serializable{
 	}
 	public void setKarjoResume(byte[] karjoResume) {
 		this.karjoResume = karjoResume;
+	}
+
+	
+	public boolean isShow() {
+		return show;
+	}
+	public void setShow(boolean show) {
+		this.show = show;
 	}
 	@Override
 	public boolean equals(Object obj) {

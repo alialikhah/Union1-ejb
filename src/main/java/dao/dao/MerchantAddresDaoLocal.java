@@ -1,5 +1,7 @@
 package dao.dao;
 
+import java.util.List;
+
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Local;
 
@@ -15,5 +17,7 @@ public interface MerchantAddresDaoLocal {
 	MerchantAddresEntity findAddresByMerchant(MerchantEntity merchantEntity) throws PanooRoleBackException;
 
 	void updateMerchantAddre(MerchantAddresEntity merchantAddresEntity);
+
+	List<MerchantAddresEntity> findAllAddres();
 
 }

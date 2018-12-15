@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -26,4 +28,23 @@ public class JobKarjoService implements JobKarjoServiceLocal {
     	jobKarjoDaoLocal.insertToKarjoEntity(jobKarjoEntity);
     }
     
+    @Override
+	public List<JobKarjoEntity> findAllKarjo(){
+    	return jobKarjoDaoLocal.findAllKarjo();
+    }
+    
+    @Override
+    public void deleteKarjo(JobKarjoEntity karjoEntity){
+    	jobKarjoDaoLocal.deleteKarjo(karjoEntity);
+    }
+    
+    @Override
+    public JobKarjoEntity findKarjoById(long karjoId) {
+    	return jobKarjoDaoLocal.findKarjoById(karjoId);
+    }
+    
+    @Override
+    public void updateKarjo(JobKarjoEntity jobKarjoEntity) {
+    	jobKarjoDaoLocal.updateKarjo(jobKarjoEntity);
+    }
 }

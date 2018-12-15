@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -35,5 +37,9 @@ public class MerchantAddresService implements MerchantAddresServiceLocal {
     @Override
     public void updateMerchantAddre(MerchantAddresEntity merchantAddresEntity) {
     	 merchantAddresDaoLocal.updateMerchantAddre(merchantAddresEntity);
+    }
+    @Override
+	public List<MerchantAddresEntity> findAllAddres(){
+    return merchantAddresDaoLocal.findAllAddres();
     }
 }

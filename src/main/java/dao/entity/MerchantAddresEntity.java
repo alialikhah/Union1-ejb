@@ -35,6 +35,8 @@ public class MerchantAddresEntity implements Serializable {
 	private String merchantState;
 	@Column(name = "merchant_city", length = 200, nullable = true)
 	private String merchantCity;
+	@Column(name = "merchant_distance", nullable = true)
+	private double dastance;
 	
 	@Column(name="merchant_postaddres" , nullable=true , length=300)
 	private String merchantPostAddres;
@@ -131,7 +133,13 @@ public class MerchantAddresEntity implements Serializable {
 		this.merchantCity = merchantCity;
 	}
 	
-	
+	public double getDastance() {
+		return dastance;
+	}
+
+	public void setDastance(double dastance) {
+		this.dastance = dastance;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

@@ -136,7 +136,7 @@ public class MerchantEntity implements Serializable {
 	@Column(name="merchant_shopnameper" , nullable=true , length=150)
 	private String merchantShopNamePer;
 	
-	@Column(name="merchant_shopnameeng" , nullable=true , length=150)
+	@Column(name="merchant_shopnameeng" , nullable=true , length=150 , unique=true)
 	private String merchantShopNameEng;
 	
 	@Column(name="merchant_mobasherat" , nullable=true)
@@ -219,6 +219,8 @@ public class MerchantEntity implements Serializable {
 	@Lob
 	@Column(name="merchant_logo" , nullable=true)
 	private byte[] logo;
+	@Column(name="view_page" , nullable=true)
+	private int viewPage;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "merchant")
 	private List<DedicatedEntity> merchantDedicate = new ArrayList<>();
@@ -996,6 +998,26 @@ public class MerchantEntity implements Serializable {
 	public void setShomarehParPaano(long shomarehParvande) {
 		this.shomarehParPaano = shomarehParvande;
 	}
+	
+	
+
+
+
+	public int getViewPage() {
+		return viewPage;
+	}
+
+
+
+
+
+
+	public void setViewPage(int viewPage) {
+		this.viewPage = viewPage;
+	}
+
+
+
 
 
 

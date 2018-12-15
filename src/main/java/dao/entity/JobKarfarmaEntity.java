@@ -67,6 +67,10 @@ public class JobKarfarmaEntity implements Serializable{
 	private String karfarmaTakhasosMorede;
 	@Column(name = "karafarma_desc", length = 500, nullable = true)
 	private String karfarmaDescription;
+	@Column(name = "karafarma_addr", length = 500, nullable = true)
+	private String karafarmaAddress;
+	@Column(name = "hogog", length = 500, nullable = true)
+	private String mizanHogog;
 	
 	@Lob
 	@Column(name="karfarma_pic" , nullable=true)
@@ -202,6 +206,20 @@ public class JobKarfarmaEntity implements Serializable{
 	}
 	public void setKarfarmaJobTitle(String karfarmaJobTitle) {
 		this.karfarmaJobTitle = karfarmaJobTitle;
+	}
+
+	public String getKarafarmaAddress() {
+		return karafarmaAddress;
+	}
+	public void setKarafarmaAddress(String karafarmaAddress) {
+		this.karafarmaAddress = karafarmaAddress;
+	}
+	
+	public String getMizanHogog() {
+		return mizanHogog;
+	}
+	public void setMizanHogog(String mizanHogog) {
+		this.mizanHogog = mizanHogog;
 	}
 	@Override
 	public boolean equals(Object obj) {

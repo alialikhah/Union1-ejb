@@ -17,4 +17,6 @@ public interface JobKarfarmaDaoLocal {
 
 	void updateKarfarma(JobKarfarmaEntity jobKarfarmaEntity);
 
+	void deleteKarfarma(JobKarfarmaEntity jobKarfarmaEntity);
+
 }

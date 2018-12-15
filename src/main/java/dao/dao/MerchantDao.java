@@ -26,6 +26,8 @@ public class MerchantDao implements MerchantDaoLocal {
     public List<MerchantEntity> findByMerchantReste(String merchantRaste) {
     	return entityManager.createNamedQuery("findMerchantByRaste").setParameter("v_merchantRaste", merchantRaste).getResultList();
     }
+    
+
 
     
     

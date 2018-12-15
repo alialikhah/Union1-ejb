@@ -42,4 +42,11 @@ public class JobKarfarmaDao implements JobKarfarmaDaoLocal {
     public void updateKarfarma(JobKarfarmaEntity jobKarfarmaEntity) {
     	entityManager.merge(jobKarfarmaEntity);
     }
+    
+    @Override
+    public void deleteKarfarma(JobKarfarmaEntity jobKarfarmaEntity){
+    	JobKarfarmaEntity karfarmaEntity=new JobKarfarmaEntity();
+    	karfarmaEntity=entityManager.merge(jobKarfarmaEntity);
+    	entityManager.remove(karfarmaEntity);
+    }
 }

@@ -53,6 +53,7 @@ public class MojtameService implements MojtameServiceLocal {
 		return mojtameDaoLocal.findMojtamaByTitle(mojtamaTitle);
 	}
     
+
     
     }
 

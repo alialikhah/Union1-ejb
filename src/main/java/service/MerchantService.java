@@ -28,5 +28,7 @@ public class MerchantService implements MerchantServiceLocal {
     	return merchantDaoLocal.findByMerchantReste(merchantRaste);
     }
     
+    
+    
 
 }

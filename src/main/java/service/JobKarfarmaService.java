@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import dao.dao.JobKarfarmaDaoLocal;
 import dao.entity.JobKarfarmaEntity;
+import dao.entity.JobKarjoEntity;
 
 /**
  * Session Bean implementation class JobKarfarmaService
@@ -41,6 +42,11 @@ public class JobKarfarmaService implements JobKarfarmaServiceLocal {
     @Override
     public void updateKarfarma(JobKarfarmaEntity jobKarfarmaEntity) {
     	jobKarfarmaDaoLocal.updateKarfarma(jobKarfarmaEntity);
+    }
+    
+    @Override
+    public void deleteKarfarma(JobKarfarmaEntity jobKarfarmaEntity){
+    	jobKarfarmaDaoLocal.deleteKarfarma(jobKarfarmaEntity);
     }
 
 }

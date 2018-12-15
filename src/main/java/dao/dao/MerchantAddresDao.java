@@ -1,5 +1,7 @@
 package dao.dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,5 +41,11 @@ public class MerchantAddresDao implements MerchantAddresDaoLocal {
     @Override
     public void updateMerchantAddre(MerchantAddresEntity merchantAddresEntity) {
     	entityManager.merge(merchantAddresEntity);
+    }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+	public List<MerchantAddresEntity> findAllAddres(){
+    return entityManager.createNamedQuery("findAllMerchantAddres").getResultList();
     }
 }
