@@ -17,6 +17,7 @@ import dao.entity.MerchantEntity;
 import dao.entity.MojtameEntity;
 import dao.entity.NaghdOBaresiEntity;
 import dao.entity.NewsEntity;
+import dao.entity.RentEntity;
 import dao.entity.Shekayat1;
 import dao.entity.SliderEntity;
 import dao.entity.UserEntity;
@@ -55,6 +56,8 @@ public class SingletonService implements SingletonServiceLocal {
 	private UserServiceLocal userServiceLocal;
 	@Inject
 	private ShekayatServiceLocal shekayatServiceLocal;
+	@Inject
+	private RentServiceLocal rentServiceLocal;
 	
 	private List<MerchantEntity> merchantList = new ArrayList<>();
 	private List<MerchantEntity> merchantMobileList = new ArrayList<>();
@@ -78,6 +81,17 @@ public class SingletonService implements SingletonServiceLocal {
 	private List<UserEntity> userEntities=new ArrayList<>();
 	private List<Shekayat1> shekayat1s=new ArrayList<>();
 	private List<Shekayat1> shekayat1s2=new ArrayList<>();
+	private List<RentEntity> rentEntities=new ArrayList<>();
+	private List<MerchantEntity> merchantEntitiesGold=new ArrayList<>();
+	private List<MerchantEntity> merchantListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantMobileListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantKhanegiListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantCarListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantMusicListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantElecListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantCamListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantCctvListGold = new ArrayList<>();
+	private List<MerchantEntity> merchantCdListGold = new ArrayList<>();
 	
     private long onlineUser;
 
@@ -289,10 +303,105 @@ public class SingletonService implements SingletonServiceLocal {
 	public void setShekayat1s2(List<Shekayat1> shekayat1s2) {
 		this.shekayat1s2 = shekayat1s2;
 	}
+	
+	
+	@Override
+	public List<RentEntity> getRentEntities() {
+		return rentEntities;
+	}
+
+	public void setRentEntities(List<RentEntity> rentEntities) {
+		this.rentEntities = rentEntities;
+	}
+	
+	@Override
+	public List<MerchantEntity> getMerchantListGold() {
+		return merchantListGold;
+	}
+
+	public void setMerchantListGold(List<MerchantEntity> merchantListGold) {
+		this.merchantListGold = merchantListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantMobileListGold() {
+		return merchantMobileListGold;
+	}
+
+	public void setMerchantMobileListGold(List<MerchantEntity> merchantMobileListGold) {
+		this.merchantMobileListGold = merchantMobileListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantKhanegiListGold() {
+		return merchantKhanegiListGold;
+	}
+
+	public void setMerchantKhanegiListGold(List<MerchantEntity> merchantKhanegiListGold) {
+		this.merchantKhanegiListGold = merchantKhanegiListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantCarListGold() {
+		return merchantCarListGold;
+	}
+
+	public void setMerchantCarListGold(List<MerchantEntity> merchantCarListGold) {
+		this.merchantCarListGold = merchantCarListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantMusicListGold() {
+		return merchantMusicListGold;
+	}
+
+	public void setMerchantMusicListGold(List<MerchantEntity> merchantMusicListGold) {
+		this.merchantMusicListGold = merchantMusicListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantElecListGold() {
+		return merchantElecListGold;
+	}
+
+	public void setMerchantElecListGold(List<MerchantEntity> merchantElecListGold) {
+		this.merchantElecListGold = merchantElecListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantCamListGold() {
+		return merchantCamListGold;
+	}
+
+	public void setMerchantCamListGold(List<MerchantEntity> merchantCamListGold) {
+		this.merchantCamListGold = merchantCamListGold;
+	}
+	@Override
+	public List<MerchantEntity> getMerchantCctvListGold() {
+		return merchantCctvListGold;
+	}
+
+	public void setMerchantCctvListGold(List<MerchantEntity> merchantCctvListGold) {
+		this.merchantCctvListGold = merchantCctvListGold;
+	}
+	
+	
+
+	@Override
+	public List<MerchantEntity> getMerchantCdListGold() {
+		return merchantCdListGold;
+	}
+
+	public void setMerchantCdListGold(List<MerchantEntity> merchantCdListGold) {
+		this.merchantCdListGold = merchantCdListGold;
+	}
+	
+	
+    @Override
+	public List<MerchantEntity> getMerchantEntitiesGold() {
+		return merchantEntitiesGold;
+	}
+
+	public void setMerchantEntitiesGold(List<MerchantEntity> merchantEntitiesGold) {
+		this.merchantEntitiesGold = merchantEntitiesGold;
+	}
 
 	@PostConstruct
 	public void fillLists() {
-		System.err.println("singletone started");
 		for (MerchantEntity merchantEntity : merchantRegisterServiceLocal.findAllMErchantEntity()) {
 			this.merchantList.add(merchantEntity);
 		}
@@ -356,6 +465,62 @@ public class SingletonService implements SingletonServiceLocal {
 			this.userEntities.addAll(userServiceLocal.findAllUsers());
 			this.shekayat1s.addAll(shekayatServiceLocal.findAllShekayat());
 			this.shekayat1s2.addAll(shekayatServiceLocal.findAllShekayatOrder());
+			this.rentEntities.addAll(rentServiceLocal.findAllRent());
+			this.merchantEntitiesGold.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("طلایی"));
+			
+
+			
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("موبایل و لوازم جانبی"))) {
+					this.merchantMobileListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("صوتی و تصویری و خانگی"))) {
+					this.merchantKhanegiListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("صوتی و تصویری اتومبیل"))) {
+					this.merchantCarListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("آلات موسیقی"))) {
+					this.merchantMusicListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("قطعات الکترونیک"))) {
+					this.merchantElecListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("دوربین عکاسی و فیلم برداری"))) {
+					this.merchantCamListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("دوربین مدار بسته"))) {
+					this.merchantCctvListGold.add(merchantEntity);
+				}
+			}
+			
+			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+				if ((merchantEntity.getMerchantRaste().equals("سی دی"))) {
+					this.merchantCdListGold.add(merchantEntity);
+				}
+			}
+			
+			
+			
 			
 	}
 
@@ -385,6 +550,17 @@ public class SingletonService implements SingletonServiceLocal {
 		userEntities.clear();
 		shekayat1s.clear();
 		shekayat1s2.clear();
+		rentEntities.clear();
+		merchantEntitiesGold.clear();
+		merchantCamListGold.clear();
+		merchantCarListGold.clear();
+		merchantCctvListGold.clear();
+		merchantCdListGold.clear();
+		merchantElecListGold.clear();
+		merchantKhanegiListGold.clear();
+		merchantMobileListGold.clear();
+		merchantMusicListGold.clear();
+		
 		for (MerchantEntity merchantEntity : merchantRegisterServiceLocal.findAllMErchantEntity()) {
 			this.merchantList.add(merchantEntity);
 		}
@@ -444,6 +620,59 @@ public class SingletonService implements SingletonServiceLocal {
 		this.userEntities.addAll(userServiceLocal.findAllUsers());
 		this.shekayat1s.addAll(shekayatServiceLocal.findAllShekayat());
 		this.shekayat1s2.addAll(shekayatServiceLocal.findAllShekayatOrder());
+		this.rentEntities.addAll(rentServiceLocal.findAllRent());
+		
+		this.merchantEntitiesGold.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("طلایی"));
+		
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("موبایل و لوازم جانبی"))) {
+				this.merchantMobileListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("صوتی و تصویری و خانگی"))) {
+				this.merchantKhanegiListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("صوتی و تصویری اتومبیل"))) {
+				this.merchantCarListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("آلات موسیقی"))) {
+				this.merchantMusicListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("قطعات الکترونیک"))) {
+				this.merchantElecListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("دوربین عکاسی و فیلم برداری"))) {
+				this.merchantCamListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("دوربین مدار بسته"))) {
+				this.merchantCctvListGold.add(merchantEntity);
+			}
+		}
+		
+		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
+			if ((merchantEntity.getMerchantRaste().equals("سی دی"))) {
+				this.merchantCdListGold.add(merchantEntity);
+			}
+		}
+
 	}
 
 }

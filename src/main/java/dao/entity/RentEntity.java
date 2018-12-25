@@ -20,7 +20,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name = "rent_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({ 
-@NamedQuery(name = "findAllRent", query = "SELECT a FROM RentEntity a"),
+@NamedQuery(name = "findAllRent", query = "SELECT a FROM RentEntity a ORDER BY a.rentId DESC"),
 @NamedQuery(name = "findRentById", query = "SELECT i FROM RentEntity i WHERE i.rentId=:v_rentId"),
 })
 public class RentEntity implements Serializable {
@@ -93,6 +93,8 @@ public class RentEntity implements Serializable {
 
 	@Column(name = "show")
 	private boolean show;
+	@Column(name = "foroshMoney", nullable = true)
+	private long foroshMoney;
 
 	public long getRentId() {
 		return rentId;
@@ -260,6 +262,16 @@ public class RentEntity implements Serializable {
 
 	public void setShow(boolean show) {
 		this.show = show;
+	}
+	
+	
+
+	public long getForoshMoney() {
+		return foroshMoney;
+	}
+
+	public void setForoshMoney(long foroshMoney) {
+		this.foroshMoney = foroshMoney;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import dao.entity.MerchantEntity;
 import dao.entity.MojtameEntity;
 import dao.entity.NaghdOBaresiEntity;
 import dao.entity.NewsEntity;
+import dao.entity.RentEntity;
 import dao.entity.Shekayat1;
 import dao.entity.SliderEntity;
 import dao.entity.UserEntity;
@@ -65,5 +66,27 @@ public interface SingletonServiceLocal {
 	List<Shekayat1> getShekayat1s();
 
 	List<Shekayat1> getShekayat1s2();
+
+	List<RentEntity> getRentEntities();
+
+	List<MerchantEntity> getMerchantListGold();
+
+	List<MerchantEntity> getMerchantMobileListGold();
+
+	List<MerchantEntity> getMerchantKhanegiListGold();
+
+	List<MerchantEntity> getMerchantCarListGold();
+
+	List<MerchantEntity> getMerchantMusicListGold();
+
+	List<MerchantEntity> getMerchantElecListGold();
+
+	List<MerchantEntity> getMerchantCamListGold();
+
+	List<MerchantEntity> getMerchantCctvListGold();
+
+	List<MerchantEntity> getMerchantCdListGold();
+
+	List<MerchantEntity> getMerchantEntitiesGold();
 
 }

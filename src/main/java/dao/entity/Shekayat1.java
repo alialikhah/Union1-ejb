@@ -1,6 +1,7 @@
 package dao.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.eclipse.persistence.annotations.Cache;
 import org.eclipse.persistence.annotations.CacheCoordinationType;
@@ -71,14 +74,18 @@ public class Shekayat1 implements Serializable {
 	private byte[] shakiFactor;
 	
 	//after shekayat
-	@Column(name = "vaziat", length = 200, nullable = true)
+	@Column(name = "vaziat", length = 5000, nullable = true)
 	private String vaziat;
-	@Column(name = "parvande", length = 100, nullable = true)
-	private String parvande;
-	@Column(name = "date",nullable = true)
-	private String date;
-	@Column(name = "rahgiri", length = 200, nullable = true)
-	private String rahgiri;
+	@Column(name = "tarikh", length = 100 , nullable = true)
+	private String tarikh;
+	@Column(name = "shomare" , nullable = true)
+	private long shomare;
+	@Column(name = "checkO", nullable = true)
+	private boolean checkO;
+	@Column(name="date" , nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
+
 	public long getShekayatId() {
 		return shekayatId;
 	}
@@ -88,6 +95,18 @@ public class Shekayat1 implements Serializable {
 
 	
 	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public boolean isCheckO() {
+		return checkO;
+	}
+	public void setCheckO(boolean checkO) {
+		this.checkO = checkO;
+	}
 	public String getShakiName() {
 		return shakiName;
 	}
@@ -196,24 +215,22 @@ public class Shekayat1 implements Serializable {
 	public void setVaziat(String vaziat) {
 		this.vaziat = vaziat;
 	}
-	public String getParvande() {
-		return parvande;
+	
+	
+
+	public String getTarikh() {
+		return tarikh;
 	}
-	public void setParvande(String parvande) {
-		this.parvande = parvande;
+	public void setTarikh(String tarikh) {
+		this.tarikh = tarikh;
 	}
-	public String getDate() {
-		return date;
+	public long getShomare() {
+		return shomare;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setShomare(long shomare) {
+		this.shomare = shomare;
 	}
-	public String getRahgiri() {
-		return rahgiri;
-	}
-	public void setRahgiri(String rahgiri) {
-		this.rahgiri = rahgiri;
-	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Shekayat1))

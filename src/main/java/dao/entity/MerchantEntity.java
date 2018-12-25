@@ -32,9 +32,9 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name="merchant_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="findAllMerchant" , query="SELECT m FROM MerchantEntity m"),
+	@NamedQuery(name="findAllMerchant" , query="SELECT m FROM MerchantEntity m ORDER BY m.merchantId DESC"),
 	@NamedQuery(name="findMerchantById" , query="SELECT i FROM MerchantEntity i WHERE i.merchantId=:v_merchantId"),
-	@NamedQuery(name="findMerchantByGroup" , query="SELECT i FROM MerchantEntity i WHERE i.merchantGroup=:v_merchantGroup"),
+	@NamedQuery(name="findMerchantByGroup" , query="SELECT i FROM MerchantEntity i WHERE i.merchantGroup=:v_merchantGroup ORDER BY i.merchantId DESC"),
 	@NamedQuery(name="findMerchantBySsn" , query="SELECT i FROM MerchantEntity i WHERE i.merchantSsn=:v_merchantSsn"),
 	@NamedQuery(name="findMerchantByShomarehPar" , query="SELECT i FROM MerchantEntity i WHERE i.shomarehParPaano=:v_shomarehParvande"),
 	@NamedQuery(name="findMerchantByRaste" , query="SELECT i FROM MerchantEntity i WHERE i.merchantRaste=:v_merchantRaste"),
