@@ -31,23 +31,22 @@ import org.eclipse.persistence.annotations.CacheType;
 public class ProductEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
+  ////GENERAL
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private long productId;
-	@Column(name = "product_name", length = 200, nullable = true)
-	private String productName;
-	@Column(name = "product_title", length = 200, nullable = true)
-	private String productTitle;
-	@Column(name = "product_description", length =5000, nullable = true)
-	private String productDescription;
 	@Column(name = "product_category", length = 200, nullable = true)
 	private String productCategry;
 	@Column(name = "product_model", length = 200, nullable = true)
 	private String productModel;
 	@Column(name = "product_brand", length = 200, nullable = true)
 	private String productBrand;
+	@Column(name = "product_description", length =5000, nullable = true)
+	private String productDescription;
+	@Column(name = "raste", length = 100, nullable = true)
+	private String raste;
+	
 	@Lob
 	@Column(name="product_img1" , nullable=true)
 	private byte[] productImage1;
@@ -57,12 +56,39 @@ public class ProductEntity implements Serializable {
 	@Lob
 	@Column(name="product_img3" , nullable=true)
 	private byte[] productImage3;
-	@Lob
-	@Column(name="product_img4" , nullable=true)
-	private byte[] productImage4;
-	@Lob
-	@Column(name="product_img5" , nullable=true)
-	private byte[] productImage5;
+	///////////////////////////////////////////////////
+	@Column(name = "ports", length = 200, nullable = true)
+	private String ports;
+	@Column(name = "net_mobile", length = 100, nullable = true)
+	private String netMobile;//3g 4g
+	@Column(name = "size", length = 100, nullable = true)
+	private String size;
+	@Column(name = "screen_size", length = 100, nullable = true)
+	private String screenSize;
+	@Column(name = "pixel", length = 100, nullable = true)
+	private String pixel;
+	@Column(name = "quality", length = 100, nullable = true)//hd fhd
+	private String quality;
+	@Column(name = "battery", length = 100, nullable = true)
+	private String battery;
+	@Column(name = "color", length = 100, nullable = true)
+	private String color;
+	@Column(name = "memory", length = 100, nullable = true)
+	private String memory;
+	@Column(name = "inner_memory", length = 100, nullable = true)
+	private String innerMemory;
+	@Column(name = "weight", length = 100, nullable = true)
+	private String weight;
+	@Column(name = "camera", length = 200, nullable = true)
+	private String camera;
+	@Column(name = "cpu", length = 100, nullable = true)
+	private String cpu;
+	@Column(name = "gpu", length = 100, nullable = true)
+	private String gpu;
+	@Column(name = "os", length = 100, nullable = true)
+	private String os;
+	@Column(name = "other", length = 1000, nullable = true)
+	private String other;
 	
 
 
@@ -86,20 +112,7 @@ public class ProductEntity implements Serializable {
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}   
-	public String getProductName() {
-		return this.productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}   
-	public String getProductTitle() {
-		return this.productTitle;
-	}
-
-	public void setProductTitle(String productTitle) {
-		this.productTitle = productTitle;
-	}   
+ 
 	public String getProductDescription() {
 		return this.productDescription;
 	}
@@ -128,9 +141,7 @@ public class ProductEntity implements Serializable {
 	public void setProductBrand(String productBrand) {
 		this.productBrand = productBrand;
 	}
-	
-	
-	
+
 	public byte[] getProductImage1() {
 		return productImage1;
 	}
@@ -149,17 +160,121 @@ public class ProductEntity implements Serializable {
 	public void setProductImage3(byte[] productImage3) {
 		this.productImage3 = productImage3;
 	}
-	public byte[] getProductImage4() {
-		return productImage4;
+	
+	public String getPorts() {
+		return ports;
 	}
-	public void setProductImage4(byte[] productImage4) {
-		this.productImage4 = productImage4;
+	public void setPorts(String ports) {
+		this.ports = ports;
 	}
-	public byte[] getProductImage5() {
-		return productImage5;
+	public String getSize() {
+		return size;
 	}
-	public void setProductImage5(byte[] productImage5) {
-		this.productImage5 = productImage5;
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public String getScreenSize() {
+		return screenSize;
+	}
+	public void setScreenSize(String screenSize) {
+		this.screenSize = screenSize;
+	}
+	public String getPixel() {
+		return pixel;
+	}
+	public void setPixel(String pixel) {
+		this.pixel = pixel;
+	}
+	public String getQuality() {
+		return quality;
+	}
+	public void setQuality(String quality) {
+		this.quality = quality;
+	}
+	public String getBattery() {
+		return battery;
+	}
+	public void setBattery(String battery) {
+		this.battery = battery;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getMemory() {
+		return memory;
+	}
+	public void setMemory(String memory) {
+		this.memory = memory;
+	}
+	public String getInnerMemory() {
+		return innerMemory;
+	}
+	public void setInnerMemory(String innerMemory) {
+		this.innerMemory = innerMemory;
+	}
+	public String getWeight() {
+		return weight;
+	}
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+	public String getCamera() {
+		return camera;
+	}
+	public void setCamera(String camera) {
+		this.camera = camera;
+	}
+	public String getCpu() {
+		return cpu;
+	}
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+	public String getGpu() {
+		return gpu;
+	}
+	public void setGpu(String gpu) {
+		this.gpu = gpu;
+	}
+	public String getOs() {
+		return os;
+	}
+	public void setOs(String os) {
+		this.os = os;
+	}
+	public List<DedicatedEntity> getProductDedicate() {
+		return productDedicate;
+	}
+	public void setProductDedicate(List<DedicatedEntity> productDedicate) {
+		this.productDedicate = productDedicate;
+	}
+	public LastPricesEntity getPrice() {
+		return price;
+	}
+	public void setPrice(LastPricesEntity price) {
+		this.price = price;
+	}
+
+	public String getRaste() {
+		return raste;
+	}
+	public void setRaste(String raste) {
+		this.raste = raste;
+	}
+	public String getNetMobile() {
+		return netMobile;
+	}
+	public void setNetMobile(String netMobile) {
+		this.netMobile = netMobile;
+	}
+	public String getOther() {
+		return other;
+	}
+	public void setOther(String other) {
+		this.other = other;
 	}
 	@Override
 	public boolean equals(Object obj) {

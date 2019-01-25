@@ -5,11 +5,14 @@ import java.util.List;
 import javax.ejb.Local;
 
 import dao.entity.BrandEntity;
+import dao.entity.DedicatedEntity;
+import dao.entity.HomeEntity;
 import dao.entity.MerchantAddresEntity;
 import dao.entity.MerchantEntity;
 import dao.entity.MojtameEntity;
 import dao.entity.NaghdOBaresiEntity;
 import dao.entity.NewsEntity;
+import dao.entity.ProductEntity;
 import dao.entity.RentEntity;
 import dao.entity.Shekayat1;
 import dao.entity.SliderEntity;
@@ -88,5 +91,13 @@ public interface SingletonServiceLocal {
 	List<MerchantEntity> getMerchantCdListGold();
 
 	List<MerchantEntity> getMerchantEntitiesGold();
+
+	HomeEntity getHomeEntity();
+
+	List<ProductEntity> getProductEntities();
+
+	List<DedicatedEntity> getDedicatedEntities();
+
+	List<MerchantEntity> getMerchantListSilver();
 
 }

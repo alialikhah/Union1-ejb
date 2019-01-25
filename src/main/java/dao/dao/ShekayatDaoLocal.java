@@ -13,10 +13,12 @@ public interface ShekayatDaoLocal {
 
 	List<Shekayat1> findAllShekayat();
 
-	Shekayat1 findShekayatById(long shakiId);
+	Shekayat1 findShekayatById(long shakiId) throws Exception;
 
 	void shekayatUpdate(Shekayat1 shekayat1);
 
 	List<Shekayat1> findAllShekayatOrder();
+
+	void deleteShekayatEntity(Shekayat1 shekayat1);
 
 }

@@ -148,6 +148,17 @@ public class MerchantAddresEntity implements Serializable {
 		MerchantAddresEntity merchantAddresEntity=(MerchantAddresEntity) obj;
 		return ((merchantAddresEntity.merchantAddresId==this.merchantAddresId)||(merchantAddresEntity.merchantaddr.equals(this.merchantaddr)));
 	}
+
+	@Override
+	public String toString() {
+		return "MerchantAddresEntity [merchantAddresId=" + merchantAddresId + ", merchandWidth=" + merchandWidth
+				+ ", merchantHeight=" + merchantHeight + ", merchantArea=" + merchantArea + ", merchantState="
+				+ merchantState + ", merchantCity=" + merchantCity + ", dastance=" + dastance + ", merchantPostAddres="
+				+ merchantPostAddres + ", merchantPostCode=" + merchantPostCode + ", merchantaddr=" + merchantaddr
+				+ "]";
+	}
+	
+	
   
 
    

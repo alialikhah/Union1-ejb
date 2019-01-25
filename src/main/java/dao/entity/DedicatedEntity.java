@@ -25,7 +25,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Entity
 @Table(name = "dedicated_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
-@NamedQueries({ @NamedQuery(name = "findAllDedicatedEntity", query = "SELECT d FROM DedicatedEntity d"),
+@NamedQueries({ @NamedQuery(name = "findAllDedicatedEntity", query = "SELECT d FROM DedicatedEntity d ORDER BY d.dedicatedId DESC"),
 		@NamedQuery(name = "findDedicatedEntityById", query = "SELECT dd FROM DedicatedEntity dd WHERE dd.dedicatedId=:v_dedicatedId"),
 		@NamedQuery(name = "findAllProductDesc", query = "SELECT de FROM DedicatedEntity de ORDER BY de.popularity DESC"),
 		@NamedQuery(name = "findDedicatedEntityByMerchant", query = "SELECT dd FROM DedicatedEntity dd WHERE dd.merchant=:v_merchant"), })
@@ -55,6 +55,8 @@ public class DedicatedEntity implements Serializable {
 	private long popularity;
 	@Column(name = "saled", nullable = true)
 	private long saled;
+	@Column(name = "old_price", nullable = true)
+	private long oldPrice;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "dedicate")
 	private List<ProductSpecificationEntity> productSpecificationEntity = new ArrayList<>();
@@ -105,6 +107,16 @@ public class DedicatedEntity implements Serializable {
 
 	public void setSaled(long saled) {
 		this.saled = saled;
+	}
+	
+	
+
+	public long getOldPrice() {
+		return oldPrice;
+	}
+
+	public void setOldPrice(long oldPrice) {
+		this.oldPrice = oldPrice;
 	}
 
 	@Override

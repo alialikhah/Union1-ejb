@@ -2,6 +2,7 @@ dao/entity/DedicatedEntity.class
 service/MerchantResultServiceLocal.class
 dao/dao/DedicatedProducatDaoLocal.class
 dao/dao/AddBrandDaoLocal.class
+dao/dao/HomeDao.class
 dao/dao/NewsDaoLocal.class
 dao/dao/ShekayatDaoLocal.class
 dao/entity/MashahirEntity.class
@@ -13,6 +14,7 @@ dao/dao/MerchantAddresDao.class
 service/MerchantRegisterServiceLocal.class
 service/AdminService.class
 dao/dao/ShekayatDao.class
+service/HomeServiceLocal.class
 dao/dao/MojtameDao.class
 dao/entity/LastPricesEntity.class
 service/RentService.class
@@ -32,6 +34,7 @@ dao/entity/MerchantEntity.class
 dao/dao/MashahirEngDao.class
 service/SpecialProductService.class
 service/ShekayatServiceLocal.class
+service/SearchMapService.class
 service/CommercialService.class
 rest/RestApplicationConfig.class
 dao/entity/BrandEntity.class
@@ -45,6 +48,7 @@ service/OnlineMerchantServiceLocal.class
 dao/entity/CommercialEntity.class
 dao/entity/JobKarjoEntity.class
 service/MashahirServiceLocal.class
+dao/entity/HomeEntity.class
 dao/dao/RentDaoLocal.class
 dao/dao/MojtameDaoLocal.class
 dao/dao/AddBrandDao.class
@@ -59,6 +63,7 @@ Exceptions/MerchantSsnException.class
 rest/Track.class
 dao/entity/MojtameEntity.class
 dao/entity/NaghdOBaresiEntity.class
+dao/dao/HomeDaoLocal.class
 service/ProductService.class
 service/NaghdService.class
 dao/dao/RentDao.class
@@ -97,6 +102,8 @@ dao/dao/UserDaoLocal.class
 service/AdminServiceLocal.class
 service/SingletonService.class
 dao/entity/SliderEntity.class
+service/HomeService.class
+service/SearchMapServiceLocal.class
 dao/dao/SpecialProductDao.class
 dao/entity/JobKarfarmaEntity.class
 dao/dao/MerchantAddresDaoLocal.class

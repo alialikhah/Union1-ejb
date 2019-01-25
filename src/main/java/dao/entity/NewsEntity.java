@@ -22,7 +22,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Entity
 @Table(name = "news_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
-@NamedQueries({ @NamedQuery(name = "findAllNews", query = "SELECT a FROM NewsEntity a"),
+@NamedQueries({ @NamedQuery(name = "findAllNews", query = "SELECT a FROM NewsEntity a ORDER BY a.newsId DESC"),
 		@NamedQuery(name = "findByNews", query = "SELECT u FROM NewsEntity u WHERE u.newsId=:v_newsId"), })
 public class NewsEntity implements Serializable {
 

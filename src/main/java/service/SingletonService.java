@@ -12,11 +12,14 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 import dao.entity.BrandEntity;
+import dao.entity.DedicatedEntity;
+import dao.entity.HomeEntity;
 import dao.entity.MerchantAddresEntity;
 import dao.entity.MerchantEntity;
 import dao.entity.MojtameEntity;
 import dao.entity.NaghdOBaresiEntity;
 import dao.entity.NewsEntity;
+import dao.entity.ProductEntity;
 import dao.entity.RentEntity;
 import dao.entity.Shekayat1;
 import dao.entity.SliderEntity;
@@ -58,6 +61,12 @@ public class SingletonService implements SingletonServiceLocal {
 	private ShekayatServiceLocal shekayatServiceLocal;
 	@Inject
 	private RentServiceLocal rentServiceLocal;
+	@Inject
+	private HomeServiceLocal homeServiceLocal;
+	@Inject
+	private ProductServiceLocal productServiceLocal;
+	@Inject
+	private DedicatedProductServiceLocal dedicatedProductServiceLocal;
 	
 	private List<MerchantEntity> merchantList = new ArrayList<>();
 	private List<MerchantEntity> merchantMobileList = new ArrayList<>();
@@ -92,9 +101,13 @@ public class SingletonService implements SingletonServiceLocal {
 	private List<MerchantEntity> merchantCamListGold = new ArrayList<>();
 	private List<MerchantEntity> merchantCctvListGold = new ArrayList<>();
 	private List<MerchantEntity> merchantCdListGold = new ArrayList<>();
-	
+	private HomeEntity homeEntity;
+	private List<ProductEntity> productEntities=new ArrayList<>();
+	private List<DedicatedEntity> dedicatedEntities=new ArrayList<>();
     private long onlineUser;
-
+    private List<MerchantEntity> merchantListSilver=new ArrayList<>();
+    
+    
 	@Override
 	public List<BrandEntity> getBrandList() {
 		return brandList;
@@ -399,6 +412,48 @@ public class SingletonService implements SingletonServiceLocal {
 	public void setMerchantEntitiesGold(List<MerchantEntity> merchantEntitiesGold) {
 		this.merchantEntitiesGold = merchantEntitiesGold;
 	}
+	
+	
+	
+	@Override
+	public HomeEntity getHomeEntity() {
+		return homeEntity;
+	}
+
+	public void setHomeEntity(HomeEntity homeEntity) {
+		this.homeEntity = homeEntity;
+	}
+	
+	
+	
+	@Override
+	public List<ProductEntity> getProductEntities() {
+		return productEntities;
+	}
+
+	public void setProductEntities(List<ProductEntity> productEntities) {
+		this.productEntities = productEntities;
+	}
+	
+	
+	@Override
+	public List<DedicatedEntity> getDedicatedEntities() {
+		return dedicatedEntities;
+	}
+
+	public void setDedicatedEntities(List<DedicatedEntity> dedicatedEntities) {
+		this.dedicatedEntities = dedicatedEntities;
+	}
+	
+	
+	@Override
+	public List<MerchantEntity> getMerchantListSilver() {
+		return merchantListSilver;
+	}
+
+	public void setMerchantListSilver(List<MerchantEntity> merchantListSilver) {
+		this.merchantListSilver = merchantListSilver;
+	}
 
 	@PostConstruct
 	public void fillLists() {
@@ -467,8 +522,13 @@ public class SingletonService implements SingletonServiceLocal {
 			this.shekayat1s2.addAll(shekayatServiceLocal.findAllShekayatOrder());
 			this.rentEntities.addAll(rentServiceLocal.findAllRent());
 			this.merchantEntitiesGold.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("طلایی"));
-			
-
+			this.merchantListSilver.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("نقره ای"));
+			this.productEntities.addAll(productServiceLocal.findAllProducts());
+			try {
+				this.dedicatedEntities.addAll(dedicatedProductServiceLocal.findAllDedicatedProducts());
+			} catch (Exception e) {
+				System.err.println("dedicate error");
+			}
 			
 			
 			for (MerchantEntity merchantEntity : merchantEntitiesGold) {
@@ -518,13 +578,13 @@ public class SingletonService implements SingletonServiceLocal {
 					this.merchantCdListGold.add(merchantEntity);
 				}
 			}
-			
-			
+			this.homeEntity=homeServiceLocal.findHomeEntity(1);
+
 			
 			
 	}
 
-	@Schedule(hour = "*", minute = "*/9", persistent = false)
+	@Schedule(hour = "*", minute = "*/20", persistent = false)
 	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
 	public void ejra() {
 		System.err.println("merchant filled");
@@ -560,6 +620,9 @@ public class SingletonService implements SingletonServiceLocal {
 		merchantKhanegiListGold.clear();
 		merchantMobileListGold.clear();
 		merchantMusicListGold.clear();
+		productEntities.clear();
+		dedicatedEntities.clear();
+		merchantListSilver.clear();
 		
 		for (MerchantEntity merchantEntity : merchantRegisterServiceLocal.findAllMErchantEntity()) {
 			this.merchantList.add(merchantEntity);
@@ -623,7 +686,9 @@ public class SingletonService implements SingletonServiceLocal {
 		this.rentEntities.addAll(rentServiceLocal.findAllRent());
 		
 		this.merchantEntitiesGold.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("طلایی"));
-		
+		this.merchantListSilver.addAll(merchantRegisterServiceLocal.findAllMerchantsByGroup("نقره ای"));
+		this.productEntities.addAll(productServiceLocal.findAllProducts());
+
 		
 		for (MerchantEntity merchantEntity : merchantEntitiesGold) {
 			if ((merchantEntity.getMerchantRaste().equals("موبایل و لوازم جانبی"))) {
@@ -672,7 +737,16 @@ public class SingletonService implements SingletonServiceLocal {
 				this.merchantCdListGold.add(merchantEntity);
 			}
 		}
-
+		
+		this.homeEntity=homeServiceLocal.findHomeEntity(1);
+		try {
+			this.dedicatedEntities.addAll(dedicatedProductServiceLocal.findAllDedicatedProducts());
+		} catch (Exception e) {
+			System.err.println("dedicate error");
+		}
+		
 	}
+	
+
 
 }

@@ -222,6 +222,8 @@ public class MerchantEntity implements Serializable {
 	@Column(name="view_page" , nullable=true)
 	private int viewPage;
 	
+	private int productNum;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "merchant")
 	private List<DedicatedEntity> merchantDedicate = new ArrayList<>();
 	
@@ -1014,6 +1016,24 @@ public class MerchantEntity implements Serializable {
 
 	public void setViewPage(int viewPage) {
 		this.viewPage = viewPage;
+	}
+
+
+
+
+
+
+	public int getProductNum() {
+		return productNum;
+	}
+
+
+
+
+
+
+	public void setProductNum(int productNum) {
+		this.productNum = productNum;
 	}
 
 

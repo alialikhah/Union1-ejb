@@ -34,7 +34,7 @@ public class ShekayatService implements ShekayatServiceLocal {
     }
     
     @Override
-    public Shekayat1 findShekayatById(long shakiId) {
+    public Shekayat1 findShekayatById(long shakiId) throws Exception {
     	return shekayatDao.findShekayatById(shakiId);
     }
     
@@ -46,6 +46,12 @@ public class ShekayatService implements ShekayatServiceLocal {
     @Override
 	public List<Shekayat1> findAllShekayatOrder(){
     	return shekayatDao.findAllShekayatOrder();
+    }
+    
+    
+    @Override
+    public void deleteShekayatEntity(Shekayat1 shekayat1){
+    	shekayatDao.deleteShekayatEntity(shekayat1);
     }
 
 }

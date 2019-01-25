@@ -85,6 +85,8 @@ public class Shekayat1 implements Serializable {
 	@Column(name="date" , nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	@Column(name = "picPath", length = 200 , nullable = true)
+	private String picPath;
 
 	public long getShekayatId() {
 		return shekayatId;
@@ -230,7 +232,14 @@ public class Shekayat1 implements Serializable {
 	public void setShomare(long shomare) {
 		this.shomare = shomare;
 	}
+	
 
+	public String getPicPath() {
+		return picPath;
+	}
+	public void setPicPath(String picPath) {
+		this.picPath = picPath;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Shekayat1))
