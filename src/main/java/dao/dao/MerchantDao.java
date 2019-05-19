@@ -10,6 +10,7 @@ import dao.entity.MerchantEntity;
 
 /**
  * ALI CHANGED THIS
+   Seccond change
  */
 @Stateless
 public class MerchantDao implements MerchantDaoLocal {
