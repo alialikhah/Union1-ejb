@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import dao.entity.MerchantEntity;
 
 /**
- * Session Bean implementation class MerchantDao
+ * ALI CHANGED THIS
  */
 @Stateless
 public class MerchantDao implements MerchantDaoLocal {
